@@ -54,14 +54,29 @@ var model = {
     }
     return true;
   }
-
 };
 
-model.fire("53");
-model.fire("06");
-model.fire("22");
-model.fire("35");
-model.fire("42");
-model.fire("04");
-model.fire("16");
-model.fire("26");
+
+//controller
+
+//function
+function parseGuess(guess) {
+  var alphabet = ["A","B","C","D","E","F","G"];
+
+  if(guess === null || guess.length !== 2 ) {
+    alert("Oops! Please enter a letter and a number on the board.");
+  } else {
+    var firstChar = guess.charAt(0);
+    var row = alphabet.indexOf(firstChar);
+    var column = guess.charAt(1);
+
+    if(isNaN(row) || isNaN(column)) {
+      alert("Oops! That isn't on the board!");
+    } else if(row < 0 || row >= model.boardSize || column < 0 || column >= model.boardSize) {
+      alert("Oops! that's of the board!");
+    } else {
+      return row + column;
+    }
+  }
+  return null;
+}
