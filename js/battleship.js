@@ -59,7 +59,7 @@ var model = {
 
 //controller
 
-//function
+//function - process the guess
 function parseGuess(guess) {
   var alphabet = ["A","B","C","D","E","F","G"];
 
@@ -81,6 +81,8 @@ function parseGuess(guess) {
   return null;
 }
 
+
+
 var controller = {
   guesses: 0,
 
@@ -95,3 +97,19 @@ var controller = {
     }
   }
 }
+
+//function - event handler for button
+function init() {
+  var fireButton = document.getElementById("fireButton");
+  fireButton.onclick = handleFireButton;
+}
+
+//function - getitng players guess from form
+function handleFireButton() {
+  var guessInput = document.getElementById("guessInput");
+  var guess = guessInput.value;
+  controller.processGuess(guess);
+  guessInput.value = "";
+}
+
+window.onload = init;
